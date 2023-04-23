@@ -55,7 +55,7 @@ export const Input = styled.input`
         position: absolute;
         content: "";
         top: 50%;
-        left: 2px;
+        left: 1px;
         background: ${color("blue")};
         border-radius: 50%;
         transform: translate(0%, -50%);
@@ -64,12 +64,16 @@ export const Input = styled.input`
         ${allBreakpointValue("width", 21, 14, 10, 10)};
         ${allBreakpointValue("height", 21, 14, 10, 10)};
 
-        ${mediaBreakpointDown("xs")} {
-            left: 0;
+        ${mediaBreakpointUp("fhd")} {
+            left: 2px;
         }
     }
 
     &:checked::after {
         left: 50%;
+
+        ${mediaBreakpointUp("fhd")} {
+            left: 55%;
+        }
     }
 `;
