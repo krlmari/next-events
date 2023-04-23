@@ -2,7 +2,6 @@ import {
     allBreakpointValue,
     color,
     font,
-    mediaBreakpointDown,
     mediaBreakpointUp,
 } from "@/style/mixins";
 import styled from "styled-components";
