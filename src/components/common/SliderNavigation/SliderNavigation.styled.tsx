@@ -28,7 +28,7 @@ export const Container = styled.div`
             ${allBreakpointValue("margin-left", 10, 8, 8, 8)};
         }
 
-        &:hover:not(.disabled) {
+        &:hover {
             svg {
                 opacity: 0.6;
             }
@@ -39,7 +39,7 @@ export const Container = styled.div`
             ${allBreakpointValue("width", 24, 16, 14, 14)};
             ${allBreakpointValue("height", 24, 16, 14, 14)};
             stroke: currentColor;
-            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            transition: opacity 0.3s ease-in-out;
         }
     }
 `;
