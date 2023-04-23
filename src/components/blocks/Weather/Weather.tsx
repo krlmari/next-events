@@ -104,7 +104,7 @@ const Weather: React.FC<WeatherProps> = ({ info }) => {
                         </div>
 
                         <div>
-                            {data.fact.condition && (
+                            {data.fact?.condition && (
                                 <WeatherCondition>
                                     {translateCondition(data.fact.condition)}
                                 </WeatherCondition>
