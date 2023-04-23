@@ -9,7 +9,6 @@ import {
     WeatherFactIcon,
     WeatherPartIcon,
     WeatherCondition,
-    WeatherFeels,
 } from "./Weather.styled";
 import { getWeatherYandex } from "@/lib/api";
 import Spinner from "@/components/common/Spinner/Spinner";
@@ -17,6 +16,7 @@ import dayjs from "dayjs";
 import LocationArrow from "@/icons/location-arrow.svg";
 import { translateCondition } from "@/helpers/translate";
 import { WeatherI } from "@/interfaces";
+import Image from "next/image";
 
 const getTemp = (temp: number) => {
     if (temp > 0) {
@@ -89,13 +89,16 @@ const Weather: React.FC<WeatherProps> = ({ info }) => {
                     <WeatherFact>
                         <div className="flex">
                             {data.fact?.icon && (
-                                <WeatherFactIcon
-                                    src={`https://yastatic.net/weather/i/icons/funky/dark/${data.fact.icon}.svg`}
-                                    alt={"icon"}
-                                    layout="fixed"
-                                    width={80}
-                                    height={80}
-                                />
+                                <WeatherFactIcon>
+                                    <Image
+                                        src={`https://yastatic.net/weather/i/icons/funky/dark/${data.fact.icon}.svg`}
+                                        alt={data.fact.icon}
+                                        layout="responsive"
+                                        objectFit="cover"
+                                        height={"100%"}
+                                        width={"100%"}
+                                    />
+                                </WeatherFactIcon>
                             )}
 
                             {data.fact?.temp && (
@@ -111,10 +114,10 @@ const Weather: React.FC<WeatherProps> = ({ info }) => {
                             )}
 
                             {data.fact?.feels_like && (
-                                <WeatherFeels>
+                                <p>
                                     Ощущается как{" "}
                                     {getTemp(data.fact.feels_like)}
-                                </WeatherFeels>
+                                </p>
                             )}
                         </div>
                     </WeatherFact>
@@ -124,13 +127,16 @@ const Weather: React.FC<WeatherProps> = ({ info }) => {
                             <div>
                                 <p>Вечером </p>
                                 <div>
-                                    <WeatherPartIcon
-                                        src={`https://yastatic.net/weather/i/icons/funky/dark/${data.forecasts[0].parts.evening.icon}.svg`}
-                                        alt={"icon"}
-                                        layout="fixed"
-                                        width={24}
-                                        height={24}
-                                    />
+                                    <WeatherPartIcon>
+                                        <Image
+                                            src={`https://yastatic.net/weather/i/icons/funky/dark/${data.forecasts[0].parts.evening.icon}.svg`}
+                                            alt={data.fact.icon}
+                                            layout="responsive"
+                                            objectFit="cover"
+                                            height={"100%"}
+                                            width={"100%"}
+                                        />
+                                    </WeatherPartIcon>
                                     <p>
                                         {getTemp(
                                             data.forecasts[0].parts.evening
@@ -142,13 +148,16 @@ const Weather: React.FC<WeatherProps> = ({ info }) => {
                             <div>
                                 <p>Ночью </p>
                                 <div>
-                                    <WeatherPartIcon
-                                        src={`https://yastatic.net/weather/i/icons/funky/dark/${data.forecasts[0].parts.night.icon}.svg`}
-                                        alt={"icon"}
-                                        layout="fixed"
-                                        width={24}
-                                        height={24}
-                                    />
+                                    <WeatherPartIcon>
+                                        <Image
+                                            src={`https://yastatic.net/weather/i/icons/funky/dark/${data.forecasts[0].parts.night.icon}.svg`}
+                                            alt={data.fact.icon}
+                                            layout="responsive"
+                                            objectFit="cover"
+                                            height={"100%"}
+                                            width={"100%"}
+                                        />
+                                    </WeatherPartIcon>
                                     <p>
                                         {getTemp(
                                             data.forecasts[0].parts.night
@@ -160,13 +169,16 @@ const Weather: React.FC<WeatherProps> = ({ info }) => {
                             <div>
                                 <p>Утром </p>
                                 <div>
-                                    <WeatherPartIcon
-                                        src={`https://yastatic.net/weather/i/icons/funky/dark/${data.forecasts[0].parts.morning.icon}.svg`}
-                                        alt={"icon"}
-                                        layout="fixed"
-                                        width={24}
-                                        height={24}
-                                    />
+                                    <WeatherPartIcon>
+                                        <Image
+                                            src={`https://yastatic.net/weather/i/icons/funky/dark/${data.forecasts[0].parts.morning.icon}.svg`}
+                                            alt={data.fact.icon}
+                                            layout="responsive"
+                                            objectFit="cover"
+                                            height={"100%"}
+                                            width={"100%"}
+                                        />
+                                    </WeatherPartIcon>
                                     <p>
                                         {getTemp(
                                             data.forecasts[0].parts.morning

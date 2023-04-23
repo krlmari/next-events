@@ -7,7 +7,6 @@ import {
     vw,
 } from "@/style/mixins";
 import styled from "styled-components";
-import Image from "next/image";
 
 export const Container = styled.div`
     position: relative;
@@ -92,7 +91,7 @@ export const WeatherParts = styled.div`
     & > div {
         & > p {
             color: rgba(35, 35, 35, 0.5);
-            margin-top: 12px;
+            ${allBreakpointValue("margin-top", 12, 12, 12, 12)};
             ${allBreakpointValue("margin-bottom", 12, 12, 12, 8)};
         }
 
@@ -116,8 +115,12 @@ export const WeatherCondition = styled.p`
     ${allBreakpointValue("margin-bottom", 10, 8, 8, 8)};
 `;
 
-export const WeatherFeels = styled.p``;
+export const WeatherFactIcon = styled.div`
+    ${allBreakpointValue("height", 80, 54, 36, 36)};
+    ${allBreakpointValue("width", 80, 54, 36, 36)};
+`;
 
-export const WeatherFactIcon = styled(Image)``;
-
-export const WeatherPartIcon = styled(Image)``;
+export const WeatherPartIcon = styled.div`
+    ${allBreakpointValue("height", 24, 16, 14, 14)};
+    ${allBreakpointValue("width", 24, 16, 14, 14)};
+`;
