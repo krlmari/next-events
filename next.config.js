@@ -1,4 +1,3 @@
-const { i18n } = require("./next-i18next.config");
 const colors = require("colors");
 
 if (!process.env.IMAGE_DOMAIN) {
@@ -11,9 +10,6 @@ if (!process.env.IMAGE_DOMAIN) {
 
 module.exports = {
     mode: "production",
-
-    // Конфиг для мультиязычности
-    i18n,
 
     react: {
         useSuspense: true,
