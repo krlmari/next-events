@@ -14,6 +14,7 @@ export const CardEventImage = styled(Image)`
     border-radius: 16px;
     overflow: hidden;
     user-select: none;
+    pointer-events: none;
 
     ${allBreakpointValue("height", 300, 200, 220, 220)};
     ${allBreakpointValue("margin-bottom", 20, 12, 8, 8)};
