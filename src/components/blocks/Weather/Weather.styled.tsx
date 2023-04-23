@@ -3,7 +3,6 @@ import {
     color,
     font,
     mediaBreakpointDown,
-    mediaBreakpointUp,
     vw,
 } from "@/style/mixins";
 import styled from "styled-components";
@@ -39,6 +38,7 @@ export const WeatherTitle = styled.div`
     ${allBreakpointValue("margin-bottom", 60, 40, 40, 28)};
 
     & > div {
+        align-items: center;
         ${allBreakpointValue("margin-bottom", 20, 12, 12, 8)};
 
         p {
@@ -48,13 +48,8 @@ export const WeatherTitle = styled.div`
         }
 
         & > svg {
-            width: 14px;
-            height: 14px;
-
-            ${mediaBreakpointUp("fhd")} {
-                width: ${vw(20)};
-                height: ${vw(20)};
-            }
+            ${allBreakpointValue("width", 14, 12, 10, 10)};
+            ${allBreakpointValue("height", 14, 10, 10, 10)};
         }
     }
 `;

@@ -10,11 +10,13 @@ export const Container = styled.div`
     position: relative;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background: ${color("gray")};
     border-radius: 16px;
 
     ${mediaBreakpointUp("md")} {
         flex-direction: column;
+        align-items: flex-start;
     }
 
     ${allBreakpointValue("min-height", 101, 64, 57, 38)};
