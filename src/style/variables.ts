@@ -1,14 +1,20 @@
 const variables = {
     col: 100 / 24,
     offset: {
-        mobile: 30,
-        tablet: 40,
-        desktop: 40
+        mobile: 20,
+        tablet: 36,
+        desktop1280: 100,
+        desktop1440: 160,
+        desktop1920: 160,
     },
     videoRatio: (9 / 16) * 100,
     fonts: {
-        default: 'Arial'
-    }
+        default: "Arial",
+        GraphikLCGLightName: "GraphikLCG-Light",
+        GraphikLCGBoldName: "GraphikLCG-Bold",
+        GraphikLCGMediumName: "GraphikLCG-Medium",
+        GraphikLCGSemiboldName: "GraphikLCG-Semibold",
+    },
 };
 
 export type FontFamily = keyof typeof variables.fonts;

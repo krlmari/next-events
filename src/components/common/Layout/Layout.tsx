@@ -1,16 +1,17 @@
 import React from 'react';
 import Head from 'next/head';
-import { Container } from './Layout.styled';
+import { Container } from './Layout.styled';   
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import { BasePageProps } from '@/interfaces';
 import Sandwich from '@/components/common/Sandwich/Sandwich';
 
 interface LayoutProps extends BasePageProps {
-    /* Layout props */
+  
 }
 
 const Layout: React.FC<LayoutProps> = ({ children, meta, header, sandwich }) => {
+
     return (
         <>
             <Head>

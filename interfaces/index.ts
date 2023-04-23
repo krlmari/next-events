@@ -1,8 +1,8 @@
-import { HeaderProps } from '@/components/common/Header/Header';
-import { SandwichProps } from '@/components/common/Sandwich/Sandwich';
-import React from 'react';
+import { HeaderProps } from "@/components/common/Header/Header";
+import { SandwichProps } from "@/components/common/Sandwich/Sandwich";
+import React from "react";
 
-export type DeviceTypes = 'mobile' | 'tablet' | 'smallDesktop' | 'desktop';
+export type DeviceTypes = "mobile" | "tablet" | "smallDesktop" | "desktop";
 
 /**
  * @description - Тип для мета-тегов на странице
@@ -28,4 +28,21 @@ export interface BasePageProps {
 export interface BaseUI {
     className?: string;
     children?: React.ReactNode;
+}
+
+export interface EventI {
+    title: string;
+    description?: string;
+    image?: string;
+    images?: string[];
+    date: string;
+    place: string;
+}
+
+export interface WeatherI {
+    title: string;
+    coordinates: {
+        lat: number;
+        lon: number;
+    };
 }

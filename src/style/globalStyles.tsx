@@ -1,6 +1,6 @@
-import { createGlobalStyle } from 'styled-components';
-import variables from './variables';
-import { color } from './mixins';
+import { createGlobalStyle } from "styled-components";
+import variables from "./variables";
+import { color } from "./mixins";
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
     html {
         font-family: ${variables.fonts.default};
         scrollbar-gutter: stable;
-        color: ${color('black')};
+        color: ${color("black")};
     }
 
     body {
@@ -23,9 +23,14 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         overscroll-behavior: none;
         overflow: auto;
+
+        transition: background-color 0.6s ease-in-out, color 0.6s ease-in-out;
+
+        background-color: ${({ theme }) => theme.backgroundColor};
+        color: ${({ theme }) => theme.color};
     }
 
-    h1, h2, h3, h4, h5, span, a {
+    h1, h2, h3, h4, h5, span, a, p {
         font-size: inherit;
         font-weight: inherit;
         line-height: inherit;
@@ -40,13 +45,23 @@ const GlobalStyle = createGlobalStyle`
         outline: none;
     }
 
+    input {
+        margin: 0;
+    }
+
     button {
-        font-family: ${variables.fonts.default};
-        
+        border: transparent;
+        outline: transparent;
+        padding: 0;
+
         &, &:active,
         &:focus {
             outline: none;
         }
+    }
+
+    .flex {
+        display: flex;
     }
 `;
 

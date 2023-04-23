@@ -1,12 +1,16 @@
-const { i18n } = require('./next-i18next.config');
-const colors = require('colors');
+const { i18n } = require("./next-i18next.config");
+const colors = require("colors");
 
 if (!process.env.IMAGE_DOMAIN) {
-    console.warn(`${colors.yellow('WARN')} - next.config.js содержит пустой список доменов для next/image`)
+    console.warn(
+        `${colors.yellow(
+            "WARN"
+        )} - next.config.js содержит пустой список доменов для next/image`
+    );
 }
 
 module.exports = {
-    mode: 'production',
+    mode: "production",
 
     // Конфиг для мультиязычности
     i18n,
@@ -17,7 +21,7 @@ module.exports = {
 
     // Конфиг для next/image
     images: {
-        domains: [process.env.IMAGE_DOMAIN || '']
+        domains: [process.env.IMAGE_DOMAIN || "", "yastatic.net"],
     },
 
     // Для пакета @svgr/webpack
@@ -25,20 +29,20 @@ module.exports = {
         config.module.rules.push({
             test: /\.svg$/i,
             issuer: { and: [/\.(js|ts|md)x?$/] },
-            use: ['@svgr/webpack'],
+            use: ["@svgr/webpack"],
         });
         return config;
     },
 
     // Переменные env, которые необходимо передавать на клиент
     env: {
-        API_URL: process.env.API_URL
+        API_URL: process.env.API_URL,
     },
 
     // Компилятор для минификации
     swcMinify: true,
 
     compiler: {
-        styledComponents: true
-    }
+        styledComponents: true,
+    },
 };

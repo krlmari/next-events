@@ -1,1 +1,70 @@
-{}
+{
+    "events": {
+        "title": "Ближайшие мероприятия",
+        "weather": {
+            "title": "Погода в Cочи",
+            "coordinates": {
+                "lat": 43.5992,
+                "lon": 39.7257
+            }
+        },
+        "cardsSlider": [
+            {
+                "title": "Евгений Чебатков",
+                "description": "Новая программа в&nbsp;сольном стендап-концерте Евгения Чебаткова",
+                "date": "1&nbsp;апреля, 19:00",
+                "place": "Роза Холл",
+                "image": "/images/cards/1.jpg"
+            },
+            {
+                "title": "&laquo;Золотое кольцо Абхазии&raquo;&#58; Гагры, Рица, Новый Афон",
+                "date": "апрель&nbsp;&mdash; июнь",
+                "place": "Золотое кольцо Абхазии",
+                "image": "/images/cards/12.jpg"
+            }
+        ],
+        "cards": [
+            {
+                "title": "Моя Мишель",
+                "date": "1&nbsp;апреля, 19:00",
+                "place": "Роза Холл",
+                "images": ["/images/cards/2.jpg"]
+            },
+            {
+                "title": "Сочи Парк",
+                "date": "март&nbsp;&mdash; май",
+                "place": "Сочи Парк",
+                "images": [
+                    "/images/cards/3.jpg",
+                    "/images/cards/9.jpg",
+                    "/images/cards/10.jpg",
+                    "/images/cards/11.jpg"
+                ]
+            },
+            {
+                "title": "Concord Orchestra. Симфоническое рок-шоу &laquo;Рождение мира&raquo;",
+                "date": "1&nbsp;апреля, 19:00",
+                "place": "Роза Холл",
+                "images": ["/images/cards/4.jpg"]
+            },
+            {
+                "title": "Конные прогулки по&nbsp;живописным местам Адлера",
+                "date": "март&nbsp;&mdash; июнь",
+                "place": "Конные прогулки по&nbsp;живописным местам Адлера",
+                "images": ["/images/cards/5.jpg", "/images/cards/8.jpg"]
+            },
+            {
+                "title": "&laquo;Золотое кольцо Абхазии&raquo;&#58; Гагры, Рица, Новый Афон",
+                "date": "апрель&nbsp;&mdash; июнь",
+                "place": "Золотое кольцо Абхазии",
+                "images": ["/images/cards/6.jpg"]
+            },
+            {
+                "title": "New Star Camp. L&rsquo;One",
+                "date": "1&nbsp;апреля, 19:00",
+                "place": "Аллея флагов",
+                "images": ["/images/cards/7.jpg"]
+            }
+        ]
+    }
+}

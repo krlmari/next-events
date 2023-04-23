@@ -1,9 +1,9 @@
-import breakpoints, { Breakpoints } from './breakpoints';
-import variables, { Offset, FontFamily } from './variables';
-import colors, { Colors } from './colors';
-import typography, { Typography } from './typography';
-import {css, FlattenSimpleInterpolation} from 'styled-components';
-import { rgba } from 'polished';
+import breakpoints, { Breakpoints } from "./breakpoints";
+import variables, { Offset, FontFamily } from "./variables";
+import colors, { Colors } from "./colors";
+import typography, { Typography } from "./typography";
+import { css, FlattenSimpleInterpolation } from "styled-components";
+import { rgba } from "polished";
 
 /**
  * @param breakpoint - целевой Breakpoint
@@ -13,7 +13,9 @@ import { rgba } from 'polished';
  *     // styles
  * }
  */
-export const mediaBreakpointUp: (breakpoint: Breakpoints) => string = (breakpoint) => {
+export const mediaBreakpointUp: (breakpoint: Breakpoints) => string = (
+    breakpoint
+) => {
     return `@media(min-width: ${breakpoints[breakpoint]}px)`;
 };
 
@@ -25,8 +27,44 @@ export const mediaBreakpointUp: (breakpoint: Breakpoints) => string = (breakpoin
  *     // styles
  * }
  */
-export const mediaBreakpointDown: (breakpoint: Breakpoints) => string = (breakpoint) => {
+export const mediaBreakpointDown: (breakpoint: Breakpoints) => string = (
+    breakpoint
+) => {
     return `@media(max-width: ${breakpoints[breakpoint] - 1}px)`;
+};
+
+/**
+ * @returns возвращает property для всех Breakpoints
+ */
+export const allBreakpointValue = (
+    property: string,
+    desktop1920: number,
+    desktop1280?: number,
+    tablet768?: number,
+    mobile375?: number
+) => {
+    let result = "";
+    if (mobile375) {
+        result += ` ${property}: ${vw(mobile375, 375)};`;
+    }
+    if (tablet768) {
+        result += ` ${mediaBreakpointUp("md")} {
+            ${property}: ${vw(tablet768, 768)};
+        }; `;
+    }
+
+    if (desktop1280) {
+        result += ` ${mediaBreakpointUp("xl")} {
+            ${property}: ${vw(desktop1280, 1280)};
+        }; `;
+    }
+
+    result += `
+        ${mediaBreakpointUp("fhd")} {
+            ${property}: ${vw(desktop1920, 1920)};
+        }
+    `;
+    return result;
 };
 
 /**
@@ -40,8 +78,14 @@ export const mediaBreakpointDown: (breakpoint: Breakpoints) => string = (breakpo
  *     width: ${vw(240, 'md')};
  * }
  */
-export const vw: (value: number, screenWidth?: Breakpoints | number) => string = (value, screenWidth: Breakpoints | number = 1920) => {
-    const widthInPx = typeof screenWidth === 'number' ? screenWidth : breakpoints[screenWidth];
+export const vw: (
+    value: number,
+    screenWidth?: Breakpoints | number
+) => string = (value, screenWidth: Breakpoints | number = 1920) => {
+    const widthInPx =
+        typeof screenWidth === "number"
+            ? screenWidth
+            : breakpoints[screenWidth];
     return `${(value / widthInPx) * 100}vw`;
 };
 
@@ -56,7 +100,10 @@ export const vw: (value: number, screenWidth?: Breakpoints | number) => string =
  *     height: ${vw(240, 'md')};
  * }
  */
-export const vh: (value: number, screenHeight?: number) => string = (value, screenHeight = 1080) => {
+export const vh: (value: number, screenHeight?: number) => string = (
+    value,
+    screenHeight = 1080
+) => {
     return `${(value / screenHeight) * 100}vh`;
 };
 
@@ -67,7 +114,10 @@ export const vh: (value: number, screenHeight?: number) => string = (value, scre
  * color: ${color('white')};
  * color: ${color('black', 0.5)};
  */
-export const color: (value: Colors, opacity?: number) => string = (value, opacity = 1) => {
+export const color: (value: Colors, opacity?: number) => string = (
+    value,
+    opacity = 1
+) => {
     return rgba(colors[value], opacity);
 };
 
@@ -99,7 +149,9 @@ export const offset: (type: Offset) => string = (type) => {
     const size = {
         mobile: 375,
         tablet: 768,
-        desktop: 1920
+        desktop1280: 1280,
+        desktop1440: 1440,
+        desktop1920: 1920,
     };
     return vw(variables.offset[type], size[type]);
 };
@@ -110,7 +162,9 @@ export const offset: (type: Offset) => string = (type) => {
  * @example
  * ${font('h1')};
  */
-export const font: (name: Typography) => FlattenSimpleInterpolation = (name) => {
+export const font: (name: Typography) => FlattenSimpleInterpolation = (
+    name
+) => {
     return typography[name];
 };
 
@@ -118,7 +172,9 @@ export const font: (name: Typography) => FlattenSimpleInterpolation = (name) => 
  * @param name - Название семейства шрифтов
  * @returns Стандартные стили для указанного семейства шрифтов
  */
-export const fontFamily: (name: FontFamily) => FlattenSimpleInterpolation = (name) => {
+export const fontFamily: (name: FontFamily) => FlattenSimpleInterpolation = (
+    name
+) => {
     return css`
         font-family: ${variables.fonts[name]};
     `;
@@ -133,12 +189,56 @@ export const fontFamily: (name: FontFamily) => FlattenSimpleInterpolation = (nam
  *     opacity: 0.5;
  * `)}
  */
-export const hover = (styles: FlattenSimpleInterpolation): FlattenSimpleInterpolation => {
+export const hover = (
+    styles: FlattenSimpleInterpolation
+): FlattenSimpleInterpolation => {
     return css`
         @media (hover: hover) {
             &:hover {
                 ${styles}
             }
         }
+    `;
+};
+
+/***
+ * @param property - необходимое сво-во
+ * @returns стандартные боковые отступы
+ */
+export const sideOffsets = (property: string = "padding") => {
+    return css`
+        ${property}-left: ${vw(variables.offset.mobile, 375)};
+        ${property}-right: ${vw(variables.offset.mobile, 375)};
+
+        ${mediaBreakpointUp("md")} {
+            ${property}-left: ${vw(variables.offset.tablet, 768)};
+            ${property}-right: ${vw(variables.offset.tablet, 768)};
+        }
+
+        ${mediaBreakpointUp("xl")} {
+            ${property}-left: ${vw(variables.offset.desktop1280, 1280)};
+            ${property}-right: ${vw(variables.offset.desktop1280, 1280)};
+        }
+
+        ${mediaBreakpointUp("xxl")} {
+            ${property}-left: ${vw(variables.offset.desktop1440, 1440)};
+            ${property}-right: ${vw(variables.offset.desktop1440, 1440)};
+        }
+
+        ${mediaBreakpointUp("fhd")} {
+            ${property}-left: ${vw(variables.offset.desktop1920, 1920)};
+            ${property}-right: ${vw(variables.offset.desktop1920, 1920)};
+        }
+    `;
+};
+
+export const clampText = (linesCount: number) => {
+    return css`
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: ${linesCount};
+        line-clamp: ${linesCount};
+        -webkit-box-orient: vertical;
     `;
 };
