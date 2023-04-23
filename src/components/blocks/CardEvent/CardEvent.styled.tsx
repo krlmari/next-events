@@ -30,7 +30,7 @@ export const CardEventSubtitle = styled.p`
     ${clampText(1)};
 
     color: ${({ theme }) =>
-        theme.mode === "dark" ? "white" : "rgba(35, 35, 35, 0.6);"};
+        theme.mode === "dark" ? "white" : "rgba(35, 35, 35, 0.6)"};
 `;
 
 export const CardEventCopy = styled(CopyButton)`
