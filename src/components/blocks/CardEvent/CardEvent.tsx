@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { SwiperOptions } from "swiper";
 import {
     Container,
@@ -7,8 +7,7 @@ import {
     CardEventTitle,
     CardEventSubtitle,
     CardEventCopy,
-    Slider,
-    Nav,
+    CardEventNav,
 } from "./CardEvent.styled";
 import { EventI } from "@/interfaces";
 
@@ -20,7 +19,7 @@ const SWIPER_OPTIONS: SwiperOptions = {
     allowTouchMove: false,
 };
 
-export interface CardEventProps extends EventI {}
+export interface CardEventProps extends EventI { }
 
 const CardEvent: React.FC<CardEventProps> = ({
     title,
@@ -34,7 +33,7 @@ const CardEvent: React.FC<CardEventProps> = ({
         <Container>
             {images &&
                 (images.length > 1 ? (
-                    <Slider onSwiper={setSwiper} {...SWIPER_OPTIONS}>
+                    <Swiper onSwiper={setSwiper} {...SWIPER_OPTIONS}>
                         {images.map((image, index) => (
                             <SwiperSlide key={index}>
                                 <CardEventImage
@@ -46,8 +45,8 @@ const CardEvent: React.FC<CardEventProps> = ({
                             </SwiperSlide>
                         ))}
 
-                        <Nav swiper={swiper} />
-                    </Slider>
+                        <CardEventNav swiper={swiper} />
+                    </Swiper>
                 ) : (
                     <CardEventImage
                         src={images[0]}

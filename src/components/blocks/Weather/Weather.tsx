@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import {
     Container,
     WeatherMessages,
@@ -16,7 +17,6 @@ import dayjs from "dayjs";
 import LocationArrow from "@/icons/location-arrow.svg";
 import { translateCondition } from "@/helpers/translate";
 import { WeatherI } from "@/interfaces";
-import Image from "next/image";
 
 const getTemp = (temp: number) => {
     if (temp > 0) {

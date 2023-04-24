@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Image from "@/components/common/Image/Image";
 import { allBreakpointValue, clampText, font } from "@/style/mixins";
 import CopyButton from "@/components/common/CopyButton/CopyButton";
-import { Swiper } from "swiper/react";
 import SliderNavigation from "@/components/common/SliderNavigation/SliderNavigation";
 
 export const Container = styled.div`
@@ -49,9 +48,7 @@ export const CardEventCopy = styled(CopyButton)`
     }
 `;
 
-export const Slider = styled(Swiper)``;
-
-export const Nav = styled(SliderNavigation)`
+export const CardEventNav = styled(SliderNavigation)`
     position: absolute;
     z-index: 1;
 
