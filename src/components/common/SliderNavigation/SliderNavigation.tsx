@@ -14,16 +14,16 @@ const SliderNavigation: React.FC<SliderNavigationProps> = ({
 }) => {
     return (
         <Container className={className}>
-            <div
+            <button
                 className={`swiper-button prev`}
                 onClick={() => swiper?.slidePrev()}>
                 <Arrow />
-            </div>
-            <div
+            </button>
+            <button
                 className={`swiper-button next`}
                 onClick={() => swiper?.slideNext()}>
                 <Arrow />
-            </div>
+            </button>
         </Container>
     );
 };
